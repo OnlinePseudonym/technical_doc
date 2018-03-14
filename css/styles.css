@@ -13,5 +13,6 @@ code {
 .code-txt { color: tan; }
 .code-return { color: #9a57c9; }
 .code-comments { color: #226d22 }
+.code-number { color: #b0c880; }
 
 .highlight { background: lightyellow; }
