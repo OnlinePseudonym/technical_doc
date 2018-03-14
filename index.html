@@ -27,116 +27,327 @@
         <main id="main-doc">
             <section id="Hello_World" class="main-section">
                 <header>
-                    <h2>Hello World</h2>
+                    <h2 class="main-section-title">Hello World</h2>
                 </header>
-                <p>
+                <p class="body-txt">
                     The easiest way to get started with React is to use <a href="https://reactjs.org/redirect-to-codepen
                     /hello-world">this Hello World example code on CodePen.</a> You don’t need to install anything;
                     you can just open it in another tab and follow along as we go through examples. If you’d rather use
                     a local development environment, check out the <a href="https://reactjs.org/docs/try-react.html">
                     Installation</a> section.
                 </p>
-                <p>
+                <p class="body-txt">
                     The Smallest React example looks like this:
                 </p>
                 <code>
-                    ReactDOM.render(
-                        &lth1&gtHello, world!&lt/h1&gt,
-                        document.getElementById('root')
+                    <span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
+                        <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>,
+                        <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
                     );
                 </code>
-                <p>
+                <p class="body-txt">
                     It renders a heading saying "Hello, world!" on the page.
                 </p>
-                <p>
+                <p class="body-txt">
                     The next few sections will gradually introduce you to using React. We will examine the building
                     blocks of React apps: elements and components. Once you master them, you can create complex apps
                     from small reusable pieces.
                 </p>
-                <h3>A Note on JavaScript</h3>
-                <p>
-                        React is a JavaScript library, and so we’ll assume you have a basic understanding of the
-                        JavaScript language. If you don’t feel very confident, we recommend <a href="https://
-                        developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">refreshing
-                        your JavaScript knowledge</a> so you can follow along more easily.
+                <h3 class="body-title">A Note on JavaScript</h3>
+                <p class="body-txt">
+                    React is a JavaScript library, and so we’ll assume you have a basic understanding of the JavaScript
+                    language. If you don’t feel very confident, we recommend <a href="https://developer.mozilla.org/en-
+                    US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">refreshing your JavaScript knowledge</a> so
+                    you can follow along more easily.
                 </p>
-                <p>
-                        We also use some of the ES6 syntax in the examples. We try to use it sparingly because it’s
-                        still relatively new, but we encourage you to get familiar with <a href="https://developer.
-                        mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow functions</a>,
-                        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">classes</a>
-                        , <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals">
-                        template literals</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/
-                        Reference/Statements/let">let</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/
-                        JavaScript/Reference/Statements/const">const</a> statements. You can use the <a href="https://
-                        babeljs.io/repl/#?presets=react&code_lz=MYewdgzgLgBApgGzgWzmWBeGAeAFgRgD4AJRBEAGhgHcQAnBAEwEJsB
-                        6AwgbgChRJY_KAEMAlmDh0YWRiGABXVOgB0AczhQAokiVQAQgE8AkowAUAcjogQUcwEpeAJTjDgUACIB5ALLK6aRklTRBQ0
-                        KCohMQk6Bx4gA">Babel REPL</a> to check what ES6 code compiles to.
+                <p class="body-txt">
+                    We also use some of the ES6 syntax in the examples. We try to use it sparingly because it’s still
+                    relatively new, but we encourage you to get familiar with <a href="https://developer.mozilla.org/en
+                    -US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow functions</a>, <a href="https://
+                    developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">classes</a>, <a href="https://
+                    developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals">template literals</a>, <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">let</a>,
+                    and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">
+                    const</a> statements. You can use the <a href="https://babeljs.io/repl/#?presets=react&code_lz=MYew
+                    dgzgLgBApgGzgWzmWBeGAeAFgRgD4AJRBEAGhgHcQAnBAEwEJsB6AwgbgChRJY_KAEMAlmDh0YWRiGABXVOgB0AczhQAokiVQAQ
+                    gE8AkowAUAcjogQUcwEpeAJTjDgUACIB5ALLK6aRklTRBQ0KCohMQk6Bx4gA">Babel REPL</a> to check what ES6 code
+                    compiles to.
                 </p>
             </section>
             <section id="Introducing_JSX" class="main-section">
                 <header>
-                    <h2>Introducing JSX</h2>
+                    <h2 class="main-section-title">Introducing JSX</h2>
                 </header>
-                <code></code>
+                <p class="body-txt">
+                    Consider this variable declaration:
+                </p>
+                <code>
+                        <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;</span><span class="code-element">/h1</span><span class="code-html">&gt;</span>
+                </code>
+                <p class="body-txt">
+                    This funny tag syntax is neither a string nor HTML.
+                </p>
+                <p class="body-txt">
+                    It is called JSX, and it is a syntax extension to JavaScript. We recommend using it with React to
+                    describe what the UI should look like. JSX may remind you of a template language, but it comes with
+                    the full power of JavaScript.
+                </p>
+                <p class="body-txt">
+                    JSX produces React “elements”. We will explore rendering them to the DOM in the <a href="https://
+                    reactjs.org/docs/rendering-elements.html">next section</a>. Below, you can find the basics of JSX
+                    necessary to get you started.
+                </p>
+                <h3 class="body-title">Why JSX</h3>
+                <p class="body-txt">
+                    React embraces the fact that rendering logic is inherently coupled with other UI logic: how events
+                    are handled, how the state changes over time, and how the data is prepared for display.
+                </p>
+                <p class="body-txt">
+                    Instead of artificially separating technologies by putting markup and logic in separate files,
+                    React <a href="https://en.wikipedia.org/wiki/Separation_of_concerns">separates concerns</a> with
+                    loosely coupled units called “components” that contain both. We will come back to components in a
+                    <a href="https://reactjs.org/docs/components-and-props.html">further section</a>, but if you’re not
+                    yet comfortable putting markup in JS, <a href="https://www.youtube.com/watch?v=x7cQ3mrcKaY">this
+                    talk</a> might convince you otherwise.
+                </p>
+                <p class="body-txt">
+                    React <a href="https://reactjs.org/docs/react-without-jsx.html">doesn’t require</a> using JSX, but
+                    most people find it helpful as a visual aid when working with UI inside the JavaScript code. It
+                    also allows React to show more useful error and warning messages.
+                </p>
+                <p class="body-txt">
+                    With that out of the way, let’s get started!
+                </p>
+                <h3 class="body-title">Embedding Expressions in JSX</h3>
+                <p class="body-txt">
+                    You can embed any <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/
+                    Expressions_and_Operators#Expressions">JavaScript expression</a> in JSX by wrapping it in curly
+                    braces.
+                </p>
+                <p class="body-txt">
+                    For example, <span class="highlight">2 + 2</span>, <span class="highlight">user.firstName</span>,
+                    and <span class="highlight">formatName(user)</span> are all valid expressions:
+                </p>
+                <code>
+                    <span class="code-element">function</span> <span class="code-function">formatName</span>(<span class="code-variable">user</span>) {
+                        <span class="code-return">return</span> <span class="code-variable">user</span>.<span class="code-variable">firstName</span> + <span class="code-txt">' '</span> + <span class="code-variable">user</span>.<span class="code-variable">lastName</span>;
+                    }
+                        
+                    <span class="code-element">const</span> <span class="code-variable">user</span> = {
+                        <span class="code-txt">firstName</span>: <span class="code-txt">'Harper'</span>,
+                        <span class="code-txt">lastName</span>: <span class="code-txt">'Perez'</span>
+                    };
+                        
+                    const <span class="code-variable">element</span> = (
+                        <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                            Hello, <span class="code-element">{</span><span class="code-function">formatName</span>(<span class="code-variable">user</span>)<span class="code-element">}</span>!
+                        <span class="code-html">&lt;</span><span class="code-element">/h1</span><span class="code-html">&gt;</span>
+                    );
+                        
+                    <span class="code-variable">ReactDom</span>.<span class="code-function">render</span>(
+                        <span class="code-variable">element</span>,
+                        <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+                    );
+                </code>
+                <p class="body-txt">
+                    <a href="https://reactjs.org/redirect-to-codepen/introducing-jsx">Try it on CodePen</a>.
+                </p>
+                <p class="body-txt">
+                    We split JSX over multiple lines for readability. While it isn’t required, when doing this, we also
+                    recommend wrapping it in parentheses to avoid the pitfalls of <a href="http://stackoverflow.com/q/
+                    2846283">automatic semicolon insertion</a>.
+                </p>
+                <h3 class="body-title">JSX is an Expression Too</h3>
+                <p class="body-txt">
+                    After compilation, JSX expressions become regular JavaScript function calls and evaluate to
+                    JavaScript objects.
+                </p>
+                <p class="body-txt">
+                    This means that you can use JSX inside of <span class="highlight">if</span> statements and
+                    <span class="highlight">for</span> loops, assign it to variables, accept it as arguments, and
+                    return it from functions:
+                </p>
+                <code>
+                    <span class="code-element">function</span> <span class="code-function">getGreeting</span>(<span class="code-variable">user</span>> {
+                        <span class="code-return">if</span> (<span class="code-variable">user</span>> {
+                            <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, <span class="code-element">{</span><span class="code-function">formatName</span>(<span class="code-variable">user</span>)<span class="code-element">}</span>!<span class="code-html">&lt;</span><span class="code-element">/h1</span><span class="code-html">&gt;</span>;
+                        }
+                        <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, Stranger.<span class="code-html">&lt;</span><span class="code-element">/h1</span><span class="code-html">&gt;</span>;
+                    }
+                </code>
+                <h3 class="body-title">Specifying Attributes with JSX</h3>
+                <p class="body-txt">
+                    You may use quotes to specify string literals as attributes:
+                </p>
+                <code>
+                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">tabIndex</span>=<span class="code-txt">"0"</span><span class="code-html">&gt;</span><span class="code-html">&lt;</span><span class="code-element">/div</span><span class="code-html">&gt;</span>;
+                </code>
+                <p>
+                    You may also use curly braces to embed a JavaScript expression in an attribute:
+                </p>
+                <code>
+                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">user</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span><span class="code-html">&gt;</span><span class="code-html">&lt;</span><span class="code-element">/img</span><span class="code-html">&gt;</span>;
+                </code>
+                <p>
+                    Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. You
+                    should either use quotes (for string values) or curly braces (for expressions), but not both in the
+                    same attribute.
+                </p>
+                <section class="body-warning">
+                    <h4>Warning:</h4>
+                    <p class="body-txt">
+                        Since JSX is closer to JavaScript than to HTML, React DOM uses <span class="highlight">
+                        camelCase</span> property naming convention instead of HTML attribute names.
+                    </p>
+                    <p class="body-txt">
+                        For example, <span class="highlight">class</span> becomes <span class="highlight">className
+                        </span> in JSX, and <span class="highlight">tabindex</span> becomes <span class="highlight">
+                        tabIndex</span>.
+                    </p>
+                </section>
+                <h3 class="body-title">Specifying Children with JSX</h3>
+                <p class="body-txt">
+                    if a tag is empty, you may close it immediately with <span class="highlight">/&gt;</span>, like XML:
+                </p>
+                <code>
+                        <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">user</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span></span><span class="code-html"> /&gt;</span>;
+                </code>
+                <p class="body-txt">
+                    JSX tags may contain children:
+                </p>
+                <code>
+                    <span class="code-element">const</span> <span class="code-variable">element</span> = (
+                        <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+                            <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello!<span class="code-html">&lt;</span><span class="code-element">/h1</span><span class="code-html">&gt;</span>
+                            <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>Good to see you here.<span class="code-html">&lt;</span><span class="code-element">/h2</span><span class="code-html">&gt;</span>
+                        <span class="code-html">&lt;</span><span class="code-element">/div</span><span class="code-html">&gt;</span>
+                    );
+                </code>
+                <h3 class="body-title">JSX Prevents Injection Attacks</h3>
+                <p class="body-txt">
+                    It is safe to embed user input in JSX:
+                </p>
+                <code>
+                    <span class="code-element">const</span> <span class="code-variable">title</span> = <span class="code-variable">response</span>.<span class="code-variable">potentiallyMaliciousInput</span>;
+                    <span class="code-comments">// This is safe:</span>
+                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span><span class="code-element">{</span><span class="code-variable">title</span><span class="code-element">}</span><span class="code-html">&lt;</span><span class="code-element">/div</span><span class="code-html">&gt;</span>;
+                </code>
+                <p>
+                    By default, React DOM <a href="http://stackoverflow.com/questions/7381974/which-characters-need-to-
+                    be-escaped-on-html">escapes</a> any values embedded in JSX before rendering them. Thus it ensures
+                    that you can never inject anything that’s not explicitly written in your application. Everything is
+                    converted to a string before being rendered. This helps prevent <a href="https://en.wikipedia.org/
+                    wiki/Cross-site_scripting">XSS (cross-site-scripting)</a> attacks.
+                </p>
+                <h3 class="body-title">JSX Represents Objects</h3>
+                <p>
+                    Babel compiles JSX down to <span class="highlight">React.createElement()</span> calls.
+                </p>
+                <p>
+                    These two examples are identical:
+                </p>
+                <code>
+                    <span class="code-element">const</span> <span class="code-variable">element</span> = (
+                        <span class="code-html">&lt;</span><span class="code-element">h1</span> <span class="code-variable">className</span>=<span class="code-txt">"greeting"</span><span class="code-html">&gt;</span>
+                            Hello, world!
+                        <span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                    );
+                </code>
+                <code>
+                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-variable">React</span>.<span class="code-function">createElement</span>(
+                        <span class="code-txt">'h1'</span>,
+                        {<span class="code-txt">'className'</span>: <span class="code-txt">'greeting'</span>},
+                        <span class="code-txt">'Hello, world!'</span>
+                    );
+                </code>
+                <p>
+                    <span class="highlight">React.createElement()</span> performs a few checks to help you write
+                    bug-free code but essentially it creates an object like this:
+                </p>
+                <code>
+                    <span class="code-element">const</span> <span class="code-variable">element</span> = {
+                        <span class="code-txt">type</span>: <span class="code-txt">'h1'</span>,
+                        <span class="code-txt">props</span>: {
+                            <span class="code-txt">className</span>: <span class="code-txt">'greeting'</span>},
+                            <span class="code-txt">children</span>: <span class="code-txt">'Hello, world'</span>}                            
+                        }
+                    };
+                </code>
+                <p class="body-txt">
+                    These objects are called “React elements”. You can think of them as descriptions of what you want
+                    to see on the screen. React reads these objects and uses them to construct the DOM and keep it up
+                    to date.
+                </p>
+                <p class="body-txt">
+                    We will explore rendering React elements to the DOM in the next section.
+                </p>
+                <section class="body-warning">
+                    <h4>Tip:</h4>
+                    <p class="body-txt">
+                            We recommend using the <a href="http://babeljs.io/docs/editors">"Babel" language definition
+                            </a> for your editor of choice so that both ES6 and JSX code is properly highlighted. This
+                            website uses the <a href="https://labs.voronianski.com/oceanic-next-color-scheme/">Oceanic
+                            Next</a> color scheme which is compatible with it.
+                    </p>
+                </section>
             </section>
             <section id="Rendering_Elements" class="main-section">
                 <header>
-                    <h2>Rendering Elements</h2>
+                    <h2 class="main-section-title">Rendering Elements</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Components_and_Props" class="main-section">
                 <header>
-                    <h2>Components and Props</h2>
+                    <h2 class="main-section-title">Components and Props</h2>
                 </header>
                 <code></code>
             </section>
             <section id="State_and_Lifecycle" class="main-section">
                 <header>
-                    <h2>State and Lifecycle</h2>
+                    <h2 class="main-section-title">State and Lifecycle</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Handling_Events" class="main-section">
                 <header>
-                    <h2>Handling Events</h2>
+                    <h2 class="main-section-title">Handling Events</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Conditional_Rendering" class="main-section">
                 <header>
-                    <h2>Conditional Rendering</h2>
+                    <h2 class="main-section-title">Conditional Rendering</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Lists_and_Keys" class="main-section">
                 <header>
-                    <h2>Lists and Keys</h2>
+                    <h2 class="main-section-title">Lists and Keys</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Forms" class="main-section">
                 <header>
-                    <h2>Forms</h2>
+                    <h2 class="main-section-title">Forms</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Lifting_State_Up" class="main-section">
                 <header>
-                    <h2>Lifting State Up</h2>
+                    <h2 class="main-section-title">Lifting State Up</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Composition_vs_Inheritance" class="main-section">
                 <header>
-                    <h2>Composition vs Inheritance</h2>
+                    <h2 class="main-section-title">Composition vs Inheritance</h2>
                 </header>
                 <code></code>
             </section>
             <section id="Thinking_In_React" class="main-section">
                 <header>
-                    <h2>Thinking In React</h2>
+                    <h2 class="main-section-title">Thinking In React</h2>
                 </header>
                 <code></code>
             </section>
