@@ -9,7 +9,7 @@
     <body>
         <nav id="navbar">
             <header>
-                <h1>React Documentation</h1>
+                <h1>React<br>Documentation</h1>
             </header>
             <a href="#Hello_World" class="nav-link">Hello World</a>
             <a href="#Introducing_JSX" class="nav-link">Introducing JSX</a>
@@ -40,10 +40,10 @@
                     The Smallest React example looks like this:
                 </p>
                 <code>
-                    <span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
-                        <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>,
-                        <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
-                    );
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
+    <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
                 </code>
                 <p class="body-txt">
                     It renders a heading saying "Hello, world!" on the page.
@@ -82,7 +82,7 @@
                     Consider this variable declaration:
                 </p>
                 <code>
-                        <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
                 </code>
                 <p class="body-txt">
                     This funny tag syntax is neither a string nor HTML.
@@ -129,25 +129,25 @@
                     and <span class="highlight">formatName(user)</span> are all valid expressions:
                 </p>
                 <code>
-                    <span class="code-element">function</span> <span class="code-function">formatName</span>(<span class="code-variable">user</span>) {
-                        <span class="code-return">return</span> <span class="code-variable">user</span>.<span class="code-variable">firstName</span> + <span class="code-txt">' '</span> + <span class="code-variable">user</span>.<span class="code-variable">lastName</span>;
-                    }
-                        
-                    <span class="code-element">const</span> <span class="code-variable">user</span> = {
-                        <span class="code-txt">firstName</span>: <span class="code-txt">'Harper'</span>,
-                        <span class="code-txt">lastName</span>: <span class="code-txt">'Perez'</span>
-                    };
-                        
-                    const <span class="code-variable">element</span> = (
-                        <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
-                            Hello, <span class="code-element">{</span><span class="code-function">formatName</span>(<span class="code-variable">user</span>)<span class="code-element">}</span>!
-                        <span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
-                    );
-                        
-                    <span class="code-variable">ReactDom</span>.<span class="code-function">render</span>(
-                        <span class="code-variable">element</span>,
-                        <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
-                    );
+<span class="code-element">function</span> <span class="code-function">formatName</span>(<span class="code-variable">user</span>) {
+    <span class="code-return">return</span> <span class="code-variable">user</span>.<span class="code-variable">firstName</span> + <span class="code-txt">' '</span> + <span class="code-variable">user</span>.<span class="code-variable">lastName</span>;
+}
+    
+<span class="code-element">const</span> <span class="code-variable">user</span> = {
+    <span class="code-txt">firstName</span>: <span class="code-txt">'Harper'</span>,
+    <span class="code-txt">lastName</span>: <span class="code-txt">'Perez'</span>
+};
+    
+const <span class="code-variable">element</span> = (
+    <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+        Hello, <span class="code-element">{</span><span class="code-function">formatName</span>(<span class="code-variable">user</span>)<span class="code-element">}</span>!
+    <span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+);
+    
+<span class="code-variable">ReactDom</span>.<span class="code-function">render</span>(
+    <span class="code-variable">element</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
                 </code>
                 <p class="body-txt">
                     <a href="https://reactjs.org/redirect-to-codepen/introducing-jsx">Try it on CodePen</a>.
@@ -168,27 +168,27 @@
                     return it from functions:
                 </p>
                 <code>
-                    <span class="code-element">function</span> <span class="code-function">getGreeting</span>(<span class="code-variable">user</span>> {
-                        <span class="code-return">if</span> (<span class="code-variable">user</span>> {
-                            <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, <span class="code-element">{</span><span class="code-function">formatName</span>(<span class="code-variable">user</span>)<span class="code-element">}</span>!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
-                        }
-                        <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, Stranger.<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
-                    }
+<span class="code-element">function</span> <span class="code-function">getGreeting</span>(<span class="code-variable">user</span>> {
+    <span class="code-return">if</span> (<span class="code-variable">user</span>> {
+        <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, <span class="code-element">{</span><span class="code-function">formatName</span>(<span class="code-variable">user</span>)<span class="code-element">}</span>!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+    }
+    <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, Stranger.<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+}
                 </code>
                 <h3 class="body-title">Specifying Attributes with JSX</h3>
                 <p class="body-txt">
                     You may use quotes to specify string literals as attributes:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">tabIndex</span>=<span class="code-txt">"0"</span><span class="code-html">&gt;</span><span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>;
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">tabIndex</span>=<span class="code-txt">"0"</span><span class="code-html">&gt;</span><span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>;
                 </code>
                 <p>
                     You may also use curly braces to embed a JavaScript expression in an attribute:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">user</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span><span class="code-html">&gt;</span><span class="code-html">&lt;/</span><span class="code-element">img</span><span class="code-html">&gt;</span>;
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">user</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span><span class="code-html">&gt;</span><span class="code-html">&lt;/</span><span class="code-element">img</span><span class="code-html">&gt;</span>;
                 </code>
-                <p>
+                <p class="body-txt">
                     Don't put quotes around curly braces when embedding a JavaScript expression in an attribute. You
                     should either use quotes (for string values) or curly braces (for expressions), but not both in the
                     same attribute.
@@ -210,29 +210,29 @@
                     if a tag is empty, you may close it immediately with <span class="highlight">/&gt;</span>, like XML:
                 </p>
                 <code>
-                        <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">user</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span></span><span class="code-html"> /&gt;</span>;
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">user</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span></span><span class="code-html"> /&gt;</span>;
                 </code>
                 <p class="body-txt">
                     JSX tags may contain children:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = (
-                        <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
-                            <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
-                            <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>Good to see you here.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
-                        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
-                    );
+<span class="code-element">const</span> <span class="code-variable">element</span> = (
+    <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+        <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>Good to see you here.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+    <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+);
                 </code>
                 <h3 class="body-title">JSX Prevents Injection Attacks</h3>
                 <p class="body-txt">
                     It is safe to embed user input in JSX:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">title</span> = <span class="code-variable">response</span>.<span class="code-variable">potentiallyMaliciousInput</span>;
-                    <span class="code-comments">// This is safe:</span>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span><span class="code-element">{</span><span class="code-variable">title</span><span class="code-element">}</span><span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>;
+<span class="code-element">const</span> <span class="code-variable">title</span> = <span class="code-variable">response</span>.<span class="code-variable">potentiallyMaliciousInput</span>;
+<span class="code-comments">// This is safe:</span>
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span><span class="code-element">{</span><span class="code-variable">title</span><span class="code-element">}</span><span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>;
                 </code>
-                <p>
+                <p class="body-txt">
                     By default, React DOM <a href="http://stackoverflow.com/questions/7381974/which-characters-need-to-
                     be-escaped-on-html">escapes</a> any values embedded in JSX before rendering them. Thus it ensures
                     that you can never inject anything that’s not explicitly written in your application. Everything is
@@ -247,31 +247,31 @@
                     These two examples are identical:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = (
-                        <span class="code-html">&lt;</span><span class="code-element">h1</span> <span class="code-variable">className</span>=<span class="code-txt">"greeting"</span><span class="code-html">&gt;</span>
-                            Hello, world!
-                        <span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
-                    );
+<span class="code-element">const</span> <span class="code-variable">element</span> = (
+    <span class="code-html">&lt;</span><span class="code-element">h1</span> <span class="code-variable">className</span>=<span class="code-txt">"greeting"</span><span class="code-html">&gt;</span>
+        Hello, world!
+    <span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+);
                 </code>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-variable">React</span>.<span class="code-function">createElement</span>(
-                        <span class="code-txt">'h1'</span>,
-                        {<span class="code-txt">'className'</span>: <span class="code-txt">'greeting'</span>},
-                        <span class="code-txt">'Hello, world!'</span>
-                    );
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-variable">React</span>.<span class="code-function">createElement</span>(
+    <span class="code-txt">'h1'</span>,
+    {<span class="code-txt">'className'</span>: <span class="code-txt">'greeting'</span>},
+    <span class="code-txt">'Hello, world!'</span>
+);
                 </code>
-                <p>
+                <p class="body-txt">
                     <span class="highlight">React.createElement()</span> performs a few checks to help you write
                     bug-free code but essentially it creates an object like this:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = {
-                        <span class="code-txt">type</span>: <span class="code-txt">'h1'</span>,
-                        <span class="code-txt">props</span>: {
-                            <span class="code-txt">className</span>: <span class="code-txt">'greeting'</span>},
-                            <span class="code-txt">children</span>: <span class="code-txt">'Hello, world'</span>}                            
-                        }
-                    };
+<span class="code-element">const</span> <span class="code-variable">element</span> = {
+    <span class="code-txt">type</span>: <span class="code-txt">'h1'</span>,
+    <span class="code-txt">props</span>: {
+        <span class="code-txt">className</span>: <span class="code-txt">'greeting'</span>},
+        <span class="code-txt">children</span>: <span class="code-txt">'Hello, world'</span>}                            
+    }
+};
                 </code>
                 <p class="body-txt">
                     These objects are called “React elements”. You can think of them as descriptions of what you want
@@ -302,7 +302,7 @@
                     An element describes what you want to see on the screen:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
                 </code>
                 <section class="body-warning">
                     <h4>Note:</h4>
@@ -318,7 +318,7 @@
                     Let's say there is a <span class="highlight">&lt;div&gt;</span> somewhere in your HTML file:
                 </p>
                 <code>
-                    <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">id</span>=<span class="code-txt">"root"</span><span class="code-html">&gt;</span><span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+<span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">id</span>=<span class="code-txt">"root"</span><span class="code-html">&gt;</span><span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
                 </code>
                 <p class="body-txt">
                     We call this a “root” DOM node because everything inside it will be managed by React DOM.
@@ -332,8 +332,8 @@
                     render()</span>:
                 </p>
                 <code>
-                    <span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
-                    <span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(<span class="code-variable">element</span>, <span class="code-global">document</span>.<span class="code-function">getElementById</div>(<span class="code-txt">'root'</span>));
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, world!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(<span class="code-variable">element</span>, <span class="code-global">document</span>.<span class="code-function">getElementById</div>(<span class="code-txt">'root'</span>));
                 </code>
                 <p class="body-txt">
                     <a href="https://reactjs.org/redirect-to-codepen/rendering-elements/render-an-element">Try it on
@@ -357,17 +357,17 @@
                     Consider this ticking clock example:
                 </p>
                 <code>
-                    <span class="code-element">function</span> <span class="code-function">tick</span>() {
-                        <span class="code-element">const</span> <span class="code-variable">element</span> = (
-                            <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
-                                <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
-                                <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{new</span><span class="code-global">Date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
-                            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
-                        );
-                    <span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(<span class="code-variable">element</span>, <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>));
-                    }
+<span class="code-element">function</span> <span class="code-function">tick</span>() {
+    <span class="code-element">const</span> <span class="code-variable">element</span> = (
+        <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{new</span><span class="code-global">Date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(<span class="code-variable">element</span>, <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>));
+}
 
-                    <span class="code-function">setInterval</span>(<span class="code-variable">tick</span>, <span class="code-number">1000</span>);
+<span class="code-function">setInterval</span>(<span class="code-variable">tick</span>, <span class="code-number">1000</span>);
                 </code>
                 <p class="body-txt">
                     <a href="https://reactjs.org/redirect-to-codepen/rendering-elements/update-rendered-element">Try it

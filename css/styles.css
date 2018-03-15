@@ -1,8 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
+html {
+    display: grid;
+    justify-content: center;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    font-family: 'Open Sans', sans-serif;
+    max-width: 1024px;
+    margin: 0;
+}
+
+nav {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+}
+
+main {
+    max-width: 700px;
+    justify-self: center;
+}
+
 code {
     display: block;
-    white-space: pre;
+    white-space: pre-wrap;
     background: #333;
     color: #fff;
+    padding: 1rem 3rem;
+    margin: .5rem 0;
+    font-size: .75rem;
+}
+
+.main-section {
+    display: grid;
+    justify-content: center;
+}
+
+.main-section-title {
+    margin: 1rem .5rem;
+}
+
+.body-title {
+    margin: 2rem .5rem;
+}
+
+.body-txt {
+    max-width: 600px;
+    margin: 0 .5rem;
+}
+
+@media only screen and (min-width: 410px) {
+    code {
+        border-radius: 1rem;
+    }
+}
+
+@media only screen and (min-width: 550px) {
+    body {
+        grid-template-columns: 250px 1fr;
+    }
+    nav {
+        position: fixed;
+        display: flex;
+    }
+    main {
+        grid-column: 2;
+    }
 }
 
 .code-function { color: #e4e487; }
