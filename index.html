@@ -30,10 +30,10 @@
                     <h2 class="main-section-title">Hello World</h2>
                 </header>
                 <p class="body-txt">
-                    The easiest way to get started with React is to use <a href="https://reactjs.org/redirect-to-codepen
-                    /hello-world">this Hello World example code on CodePen.</a> You don’t need to install anything;
-                    you can just open it in another tab and follow along as we go through examples. If you’d rather use
-                    a local development environment, check out the <a href="https://reactjs.org/docs/try-react.html">
+                    The easiest way to get started with React is to use <a href="https://reactjs.org/redirect-to-codepen/hello-world">
+                    this Hello World example code on CodePen.</a> You don’t need to install anything; you can just open
+                    it in another tab and follow along as we go through examples. If you’d rather use a local
+                    development environment, check out the <a href="https://reactjs.org/docs/try-react.html">
                     Installation</a> section.
                 </p>
                 <p class="body-txt">
@@ -56,22 +56,18 @@
                 <h3 class="body-title">A Note on JavaScript</h3>
                 <p class="body-txt">
                     React is a JavaScript library, and so we’ll assume you have a basic understanding of the JavaScript
-                    language. If you don’t feel very confident, we recommend <a href="https://developer.mozilla.org/en-
-                    US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">refreshing your JavaScript knowledge</a> so
-                    you can follow along more easily.
+                    language. If you don’t feel very confident, we recommend <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">
+                    refreshing your JavaScript knowledge</a> so you can follow along more easily.
                 </p>
                 <p class="body-txt">
                     We also use some of the ES6 syntax in the examples. We try to use it sparingly because it’s still
-                    relatively new, but we encourage you to get familiar with <a href="https://developer.mozilla.org/en
-                    -US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">arrow functions</a>, <a href="https://
-                    developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">classes</a>, <a href="https://
-                    developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals">template literals</a>, <a
-                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">let</a>,
-                    and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">
-                    const</a> statements. You can use the <a href="https://babeljs.io/repl/#?presets=react&code_lz=MYew
-                    dgzgLgBApgGzgWzmWBeGAeAFgRgD4AJRBEAGhgHcQAnBAEwEJsB6AwgbgChRJY_KAEMAlmDh0YWRiGABXVOgB0AczhQAokiVQAQ
-                    gE8AkowAUAcjogQUcwEpeAJTjDgUACIB5ALLK6aRklTRBQ0KCohMQk6Bx4gA">Babel REPL</a> to check what ES6 code
-                    compiles to.
+                    relatively new, but we encourage you to get familiar with <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">
+                    arrow functions</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">
+                    classes</a>, <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals">
+                    template literals</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let">
+                    let</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const">
+                    const</a> statements. You can use the <a href="https://babeljs.io/repl/#?presets=react&code_lz=MYewdgzgLgBApgGzgWzmWBeGAeAFgRgD4AJRBEAGhgHcQAnBAEwEJsB6AwgbgChRJY_KAEMAlmDh0YWRiGABXVOgB0AczhQAokiVQAQgE8AkowAUAcjogQUcwEpeAJTjDgUACIB5ALLK6aRklTRBQ0KCohMQk6Bx4gA">
+                    Babel REPL</a> to check what ES6 code compiles to.
                 </p>
             </section>
             <section id="Introducing_JSX" class="main-section">
@@ -120,9 +116,8 @@
                 </p>
                 <h3 class="body-title">Embedding Expressions in JSX</h3>
                 <p class="body-txt">
-                    You can embed any <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/
-                    Expressions_and_Operators#Expressions">JavaScript expression</a> in JSX by wrapping it in curly
-                    braces.
+                    You can embed any <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions">
+                    JavaScript expression</a> in JSX by wrapping it in curly braces.
                 </p>
                 <p class="body-txt">
                     For example, <span class="highlight">2 + 2</span>, <span class="highlight">user.firstName</span>,
@@ -154,8 +149,8 @@ const <span class="code-variable">element</span> = (
                 </p>
                 <p class="body-txt">
                     We split JSX over multiple lines for readability. While it isn’t required, when doing this, we also
-                    recommend wrapping it in parentheses to avoid the pitfalls of <a href="http://stackoverflow.com/q/
-                    2846283">automatic semicolon insertion</a>.
+                    recommend wrapping it in parentheses to avoid the pitfalls of <a href="http://stackoverflow.com/q/2846283">
+                    automatic semicolon insertion</a>.
                 </p>
                 <h3 class="body-title">JSX is an Expression Too</h3>
                 <p class="body-txt">
@@ -236,8 +231,8 @@ const <span class="code-variable">element</span> = (
                     By default, React DOM <a href="http://stackoverflow.com/questions/7381974/which-characters-need-to-
                     be-escaped-on-html">escapes</a> any values embedded in JSX before rendering them. Thus it ensures
                     that you can never inject anything that’s not explicitly written in your application. Everything is
-                    converted to a string before being rendered. This helps prevent <a href="https://en.wikipedia.org/
-                    wiki/Cross-site_scripting">XSS (cross-site-scripting)</a> attacks.
+                    converted to a string before being rendered. This helps prevent <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">
+                    XSS (cross-site-scripting)</a> attacks.
                 </p>
                 <h3 class="body-title">JSX Represents Objects</h3>
                 <p>
@@ -411,7 +406,310 @@ const <span class="code-variable">element</span> = (
                 <header>
                     <h2 class="main-section-title">Components and Props</h2>
                 </header>
-                <code></code>
+                <p class="body-txt">
+                    Components let you split the UI into independent, reusable pieces, and think about each piece in
+                    isolation.
+                </p>
+                <p class="body-txt">
+                    Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called
+                    "props") and return React elements describing what should appear on the screen.
+                </p>
+                <h3 class="body-title">Functional and Class Components</h3>
+                <p class="body-txt">
+                    The simplest way to define a component is to write a JavaScript function:
+                </p>
+                <code>
+<span class="code-element">function</span> <span class="code-function">Welcome</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">name</span><span class="code-element">}</span><span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+}
+                </code>
+                <p class="body-txt">
+                    This function is a valid React component because it accepts a single “props” (which stands for
+                    properties) object argument with data and returns a React element. We call such components
+                    “functional” because they are literally JavaScript functions.
+                </p>
+                <p class="body-txt">
+                        You can also use an <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes">ES6 class</a> to define a component:
+                </p>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Welcome</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">name</span><span class="code-element">}</span><span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+    }
+}
+                </code>
+                <p class="body-txt">
+                        The above two components are equivalent from React’s point of view.
+                </p>
+                <p class="body-txt">
+                    Classes have some additional features that we will discuss in the<a href="https://reactjs.org/docs/state-and-lifecycle.html">
+                    next sections</a>. Until then, we will use functional components for their conciseness.
+                </p>
+                <h3 class="body-title">Rendering a Component</h3>
+                <p class="body-txt">
+                    Previously, we only encountered React elements that represent DOM tags:
+                </p>
+                <code>
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html"> /&gt;</span>;
+                </code>
+                <p class="body-txt">
+                    However, elements can also represent user-defined components:
+                </p>
+                <code>
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">Welcome</span> <span class="code-variable">name</span>=<span class="code-txt">"Sara"</span><span class="code-html"> /&gt;</span>;
+                </code>
+                <p class="body-txt">
+                    When React sees an element representing a user-defined component, it passes JSX attributes to this
+                    component as a single object. We call this object “props”.
+                </p>
+                <p class="body-txt">
+                    For example, this code renders “Hello, Sara” on the page:
+                </p>
+                <code>
+<span class="code-element">function</span> <span class="code-function">Welcome</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">name</span><span class="code-element">}</span><span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+}          
+
+<span class="code-element">const</span> <span class="code-variable">element</span> = <span class="code-html">&lt;</span><span class="code-element">Welcome</span> <span class="code-variable">name</span>=<span class="code-txt">"Sara"</span><span class="code-html"> /&gt;</span>;
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
+    <span class="code-variable">element</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                </code>
+                <p class="body-txt">
+                    <a href="https://reactjs.org/redirect-to-codepen/components-and-props/rendering-a-component">Try it on CodePen</a>.
+                </p>
+                <p class="body-txt">
+                    Let’s recap what happens in this example:
+                </p>
+                <ol>
+                    <li>We call <span class="highlight">ReactDOM.render()</span> with the <span class="highlight">&lt;Welcome name="Sara" /&gt;</span> element.</li>
+                    <li>React calls the <span class="highlight">Welcome</span> component with <span class="highlight">{name: 'sara'}</span> as the props.</li>
+                    <li>Our <span class="highlight">Welcome</span> component return a <span class="highlight">&lt;h1&gt;Hello, Sara&lt;/h1&gt;</span>.</li>
+                    <li>React Dom efficiently updates the DOM to match <span class="highlight">&lt;h1&gt;Hello, Sara&lt;/h1&gt;</span>.</li>
+                </ol>
+                <section class="body-warning">
+                    <h4>Caveat:</h4>
+                    <p class="body-txt">
+                        Always start compent names with a cappital letter.
+                    </p>
+                    <p class="body-txt">
+                        React treats components starting with lowercase letters as DOM tags. For example, <span class=
+                        "highlight">&lt;div /&gt;</span> represents an HTML div tag, but <span class="highlight">&lt;
+                        Welcome /&gt;</span> represents a component and requires <span class="highlight">Welcome</span>
+                        to be in scope.
+                    </p>
+                    <h3 class="body-title">Composing Components</h3>
+                    <p class="body-txt">
+                        Components can refer to other components in their output. This lets us use the same component
+                        abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all
+                        those are commonly expressed as components.
+                    </p class="body-txt">
+                    <p class="body-txt">
+                        For example, we can create an <span class="highlight">App</span> component that renders <span
+                        class="highlight">Welcome</span> many times:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">Welcome</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello, <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">name</span><span class="code-element">}</span><span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>;
+}
+
+<span class="code-element">function</span> <span class="code-function">App</span>() {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">Welcome</span> <span class="code-variable">name</span>=<span class="code-txt">"Sara"</span><span class="code-html"> /&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">Welcome</span> <span class="code-variable">name</span>=<span class="code-txt">"Cahal"</span><span class="code-html"> /&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">Welcome</span> <span class="code-variable">name</span>=<span class="code-txt">"Edite"</span><span class="code-html"> /&gt;</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    )
+}
+
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
+    <span class="code-html">&lt;</span><span class="code-element">App </span><span class="code-html"> /&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                    </code>
+                    <p class="body-txt">
+                        <a href="https://reactjs.org/redirect-to-codepen/components-and-props/composing-components">Try
+                        it on CodePen</a>.
+                    </p>
+                    <p class="body-txt">
+                        Typically, new React apps have a single <span class="highlight">App</span> component at the
+                        very top. However, if you integrate React into an existing app, you might start bottom-up with
+                        a small component like <span class="highlight">Button</span> and gradually work your way to the
+                        top of the view hierarchy.
+                    </p>
+                    <h3 class="body-title">Extracting Components</h3>
+                    <p class="body-txt">
+                        Don’t be afraid to split components into smaller components.
+                    </p>
+                    <p class="body-txt">
+                        For example, consider this <span class="highlight">Comment</span> component:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">Welcome</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment"</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"UserInfo"</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">className</span>=<span class="code-txt">"Avatar"</span>
+                    <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span>
+                    <span class="code-variable">alt</span>=<span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span>.<span class="code-variable">name</span><span class="code-element">}</span>
+                <span class="code-html">/&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"UserInfo-name"</span><span class="code-html">&gt;</span>
+                    <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span>.<span class="code-variable">name</span><span class="code-element">}</span>
+                <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment-text"</span><span class="code-html">&gt;</span>
+                <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">text</span><span class="code-element">}</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>   
+        <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment-date"</span><span class="code-html">&gt;</span>
+            <span class="code-element">{</span><span class="code-function">formatDate</span><span class="code-variable">props</span>.<span class="code-variable">date</span>)<span class="code-element">}</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+}
+                    </code>
+                    <p class="body-txt">
+                        <a href="https://reactjs.org/redirect-to-codepen/components-and-props/extracting-components">
+                        Try it on CodePen</a>.
+                    </p>
+                    <p class="body-txt">
+                        It accepts <span class="highlight">author</span> (an object), <span class="highlight">text
+                        </span> (a string), and <span class="hightlight">date</span> (a date) as props, and describes
+                        a comment on a social media website.
+                    </p>
+                    <p class="body-txt">
+                        This component can be tricky to change because of all the nesting, and it is also hard to reuse
+                        individual parts of it. Let’s extract a few components from it.
+                    </p>
+                    <p class="body-txt">
+                        First, we will extract <span class="highlight">Avatar</span>:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">Avatar</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">img</span> <span class="code-variable">className</span>=<span class="code-txt">"Avatar"</span>
+            <span class="code-variable">src</span>=<span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span>.<span class="code-variable">avatarUrl</span><span class="code-element">}</span>
+            <span class="code-variable">alt</span>=<span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span>.<span class="code-variable">name</span><span class="code-element">}</span>
+        <span class="code-html">/&gt;</span>
+
+    );
+}
+                    </code>
+                    <p class="body-txt">
+                        The <span class="highlight">Avatar</span> doesn't need to know that it is being rendered inside
+                        a <span class="highlight">Comment</span>. This is why we have given its prop a more generic
+                        name: <span class="highlight">user</span> rather than <span class="highlight">author</span>.
+                    </p>
+                    <p class="body-txt">
+                        We recomment naming props from the component's own point of view rather than the context in
+                        which it is being used.
+                    </p>
+                    <p class="body-txt">
+                        We can now simplify <span class="highlight">Comment</span> a tiny bit:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">Welcome</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment"</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"UserInfo"</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">Avatar</span> <span class="code-variable">user</span>=<span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span><span class="code-element">}</span>
+                <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"UserInfo-name"</span><span class="code-html">&gt;</span>
+                    <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span>.<span class="code-variable">name</span><span class="code-element">}</span>
+                <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment-text"</span><span class="code-html">&gt;</span>
+                <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">text</span><span class="code-element">}</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>   
+        <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment-date"</span><span class="code-html">&gt;</span>
+            <span class="code-element">{</span><span class="code-function">formatDate</span><span class="code-variable">props</span>.<span class="code-variable">date</span>)<span class="code-element">}</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+}
+                    </code>
+                    <p class="body-txt">
+                        Next, we will extract a <span class="highlight">UserInfo</span> Component that renders an
+                        <span class="highlight">Avatar</span> next to the user's name:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">UserInfo</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"UserInfo"</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">Avatar</span> <span class="code-variable">user</span>=<span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">user</span><span class="code-element">}</span>
+            <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"UserInfo-name"</span><span class="code-html">&gt;</span>
+                <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">user</span>.<span class="code-variable">name</span><span class="code-element">}</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+}
+                    </code>
+                    <p class="body-txt">
+                        This lets us simplify <span class="highlight">Comment</span> even further:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">Welcome</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment"</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">UserInfo</span> <span class="code-variable">user</span>=<span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">author</span><span class="code-element">}</span><span class="code-html"> /&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment-text"</span><span class="code-html">&gt;</span>
+                <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">text</span><span class="code-element">}</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>   
+        <span class="code-html">&lt;</span><span class="code-element">div</span> <span class="code-variable">className</span>=<span class="code-txt">"Comment-date"</span><span class="code-html">&gt;</span>
+            <span class="code-element">{</span><span class="code-function">formatDate</span><span class="code-variable">props</span>.<span class="code-variable">date</span>)<span class="code-element">}</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+}
+                    </code>
+                    <p class="body-txt">
+                        <a href="https://reactjs.org/redirect-to-codepen/components-and-props/extracting-components-continued">
+                            Try it on CodePen</a>.
+                    </p>
+                    <p class="body-txt">
+                        Extracting components might seem like grunt work at first, but having a palette of reusable
+                        components pays off in larger apps. A good rule of thumb is that if a part of your UI is used
+                        several times (<span class="highlight">Button</span>, <span class="highlight">Panel
+                        </span>, <span class="highlight">Avatar</span>), or is complex enough on its own (<span
+                        class="highlight">App</span>, <span class="highlight">FeedStory</span>, <span class=
+                        "highlight">Comment</span>), it is a good candidate to be a reusable component.
+                    </p>
+                    <h3 class="body-title">Props are Read-Only</h3>
+                    <p class="body-txt">
+                        Whether you declare a component <a href="https://reactjs.org/docs/components-and-props.html#functional-and-class-components">
+                        as a function or a class</a>, it must never modify its own props. Consider this <span class=
+                        "highlight">sum</span> function:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">sum</span>(<span class="code-variable">a</span>, <span class="code-variable">b</span>) {
+    <span class="code-return">return</span> <span class="code-variable">a</span> + <span class="code-variable">b</span>;
+}
+                    </code>
+                    <p class="body-txt">
+                        Such functions are called <a href="https://en.wikipedia.org/wiki/Pure_function">"pure"</a>
+                        because they do not attempt to change the inputs, and always retrun the same result for the
+                        same inputs.
+                    </p>
+                    <p class="body-txt">
+                        In contrast, this function is impure because it changes its own input:
+                    </p>
+                    <code>
+<span class="code-element">function</span> <span class="code-function">withdraw</span>(<span class="code-variable">account</span>, <span class="code-variable">amount</span>) {
+    <span class="code-variable">account</span>.<span class="code-variable">total</span> -= <span class="code-variable">amount</span>;
+                    </code>
+                    <p class="body-txt">
+                        React is pretty flexible but it has a single strict rule:
+                    </p>
+                    <p class="body-txt bold">
+                        All React Components must act like pure functions with respect to their props.
+                    </p>
+                    <p class="body-txt">
+                        Of course, application UIs are dynamic and change over time. In the next section, we will
+                        introduce a new concept of “state”. State allows React components to change their output over
+                        time in response to user actions, network responses, and anything else, without violating this
+                        rule.
+                    </p>
+                </section>
             </section>
             <section id="State_and_Lifecycle" class="main-section">
                 <header>

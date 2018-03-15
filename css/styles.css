@@ -31,7 +31,6 @@ code {
     color: #fff;
     padding: 1rem 3rem;
     margin: .5rem 0;
-    font-size: .75rem;
 }
 
 .main-section {
@@ -49,7 +48,6 @@ code {
 
 .body-txt {
     max-width: 600px;
-    margin: 0 .5rem;
 }
 
 @media only screen and (min-width: 410px) {
@@ -82,3 +80,5 @@ code {
 .code-number { color: #b0c880; }
 
 .highlight { background: lightyellow; }
+
+.bold { font-weight: bold }
