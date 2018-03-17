@@ -715,7 +715,544 @@ const <span class="code-variable">element</span> = (
                 <header>
                     <h2 class="main-section-title">State and Lifecycle</h2>
                 </header>
-                <code></code>
+                <p class="body-txt">
+                    Consider the ticking clock example from <a href="https://reactjs.org/docs/rendering-elements.html#updating-the-rendered-element">
+                    one of the previous sections</a>.
+                </p>
+                <p class="body-txt">
+                    So far we have only learned one way to update the UI.
+                </p>
+                <p class="body-txt">
+                    We call <span class="highligh">ReactDOM.render()</span> tochange the rendered output:
+                </p>
+                <code>
+<span class="code-element">function</span> <span class="code-function">tick</span>() {
+    <span class="code-element">const</span> <span class="code-variable">element</span> = (
+        <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{new</span><span class="code-global">Date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
+    <span class="code-variable">element</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+    );
+}
+
+<span class="code-function">setInterval</span>(<span class="code-variable">tick</span>, <span class="code-number">1000</span>);
+                </code>
+                <p class="body-txt">
+                    <a href="http://codepen.io/gaearon/pen/gwoJZk?editors=0010">Try it on CodePen.</a>
+                </p>
+                <p class="body-txt">
+                    In this section, we will learn how to make the <span class="highlight">Clock</span> component
+                    truly reusable and encapsulated. It will set up its own timer and update itself every second.
+                </p>
+                <p class="body-txt">
+                    We can start by encapsulating how the clock looks:
+                </p>
+                <code>
+<span class="code-element">function</span> <span class="code-function">Clock</span>(<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+}
+<span class="code-element">function</span><span class="code-function">tick</span>() {
+    <span class="code-variable">ReactDOM</span>.<span class="code-function">render(</span>
+        <span class="code-html">&lt;</span><span class="code-element">Clock</span> <span class="code-variable">date</span>=<span class="code-element">{new</span> <span class="code-global">Date</span>()<span class="code-element">}</span><span class="code-html">/&gt;</span>,
+        <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+    );
+}
+
+<span class="code-function">setInterval</span>(<span class="code-variable">tick</span>, <span class="code-number">1000</span>);
+                </code>
+                <p class="body-txt">
+                    <a href="http://codepen.io/gaearon/pen/dpdoYR?editors=0010">Try it on CodePen.</a>
+                </p>
+                <p class="body-txt">
+                    However, it misses a crucial requirement: the fact that the <span class="highlight">Clock</span>
+                    sets up a timer and updates the UI every second should be an implementation detail of the <span
+                    class="highlight">Clock</span>.
+                </p>
+                <p class="body-txt">
+                    Ideally we want to write this once and have the <span class="highlight">Clock</span> update itself:
+                </p>
+                <code>
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render(</span>
+    <span class="code-html">&lt;</span><span class="code-element">Clock</span></span><span class="code-html"> /&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                </code>
+                <p class="body-txt">
+                    To implement this, we need to add "state" to the <span class="highlight">Clock</span> component.
+                </p>
+                <p class="body-txt">
+                    State is similar to props, but it is private and fully controlled by the component.
+                </p>
+                <p class="body-txt">
+                    We <a href="https://reactjs.org/docs/components-and-props.html#functional-and-class-components">
+                    mentioned before</a> that components defined as classes have some additional features. Local state
+                    is exactly that: a feature available only to classes.
+                </p>
+                <h3 class="body-title">Converting a Function to a Class</h3>
+                <p class="body-txt">
+                    You can convert a functional component like <span class="highlight">Clock</span> to a class in five
+                    steps:
+                </p>
+                <ol>
+                    <li>Create an <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes">
+                        ES6 class</a>, with the same name, that extends <span class="highlight">React.Component</span>.</li>
+                    <li>Add a single empty method to it called <span class="highlight">render()</span>.</li>
+                    <li>Move the body of the function into the <span class="highlight">render()</span> method.</li>
+                    <li>Replace <span class="highlight">props</span> with <span class="highlight">this.props</span>
+                        in the <span class="highlight">render()</span> body.</li>
+                    <li>Delete the remaining empty function declaration.</li>
+                </ol>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Clock</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{</span><span class="code-variable">props</span>.<span class="code-variable">date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+                </code>
+                <p class="body-txt">
+                    <a href="http://codepen.io/gaearon/pen/dpdoYR?editors=0010">Try it on CodePen.</a>
+                </p>
+                <p class="body-txt">
+                    <span class="highlight">Clock</span> is now defined as a class rather than a function.
+                </p>
+                <p class="body-txt">
+                    This lets us use additional features such as local state and lifecycle hooks.
+                </p>
+                <h3 class="body-title">Adding local State to a Class</h3>
+                <p class="body-txt">
+                    We will move the <span class="highlight">date</span> from props to state in three steps:
+                </p>
+                <ol>
+                    <li>Replace <span class="highlight">this.props.date</span> with <span class="highlight">
+                        this.state.date</span> in the <span class="highlight">render()</span> method:</li>
+                </ol>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Clock</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{</span><span class="code-variable">state</span>.<span class="code-variable">date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+                </code>
+                <ol start="2">
+                    <li>Add a <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes#Constructor">
+                        class constructor</a> that assigns the initial <span class="highlight">this.state</span>:</li>
+                </ol>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Clock</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">constructor</span>(<span class="code-variable">props</span>) {
+        <span class="code-function">super</span>(<span class="code-variable">props</span>);
+        <span class="code-element">this</span>.<span class="code-variable">state</span> = {<span class="code-txt">date</span>: <span class="code-element">new</span> <span class="code-global">Date</span>()};
+    }
+    
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{</span><span class="code-variable">state</span>.<span class="code-variable">date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+                </code>
+                <p class="body-txt">
+                    Note how wew pass <span class="highlight">props</span> to the base constructor:
+                </p>
+                <code>
+<span class="code-function">constructor</span>(<span class="code-variable">props</span>) {
+    <span class="code-function">super</span>(<span class="code-variable">props</span>);
+    <span class="code-element">this</span>.<span class="code-variable">state</span> = {<span class="code-txt">date</span>: <span class="code-element">new</span> <span class="code-global">Date</span>()};
+}
+                </code>
+                <ol start="3">
+                    <li>Remove the <span class="highlight">date</span> prop from the <span class="highlight">&lt;Clock 
+                        /&gt;</span> element:</li>
+                </ol>
+                <code>
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render(</span>
+    <span class="code-html">&lt;</span><span class="code-element">Clock</span></span><span class="code-html"> /&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                </code>
+                <p class="body-txt">
+                    We will later add the timer code back to the component itself.
+                </p>
+                <p class="body-txt">
+                    The result looks like this:
+                </p>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Clock</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">constructor</span>(<span class="code-variable">props</span>) {
+        <span class="code-function">super</span>(<span class="code-variable">props</span>);
+        <span class="code-element">this</span>.<span class="code-variable">state</span> = {<span class="code-txt">date</span>: <span class="code-element">new</span> <span class="code-global">Date</span>()};
+    }
+    
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{</span><span class="code-variable">state</span>.<span class="code-variable">date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render(</span>
+    <span class="code-html">&lt;</span><span class="code-element">Clock</span></span><span class="code-html"> /&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                </code>
+                <p class="body-txt">
+                    <a href="http://codepen.io/gaearon/pen/dpdoYR?editors=0010">Try it on CodePen.</a>
+                </p>
+                <p class="body-txt">
+                    Next, we'll make the <span class="highlight">Clock</span> set up its own timer and update itself
+                    every second.
+                </p>
+                <h3 class="body-title">Adding Lifecycle Methods to a Class</h3>
+                <p class="body-txt">
+                    In applications with amny components, it's very important to free up resources taken by the
+                    components when they are destroyed.
+                </p>
+                <p class="body-txt">
+                    We want to <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval">set
+                    up a timer</a> whenever the <span class="highlight">Clock</span> is rendered to the DOM for the
+                    first time. This is called "mounting" in React.
+                </p>
+                <p class="body-txt">
+                    We also want to <a href="https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/clearInterval">
+                    clear that timer</a> whenever the DOM produced by the <span class="highlight">Clock</span> is
+                    removed. This is called "unmounting" in React.
+                </p>
+                <p class="body-txt">
+                    We can declare special methods on the component class to run some code when a component mounts and
+                    unmounts:
+                </p>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Clock</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">constructor</span>(<span class="code-variable">props</span>) {
+        <span class="code-function">super</span>(<span class="code-variable">props</span>);
+        <span class="code-element">this</span>.<span class="code-variable">state</span> = {<span class="code-txt">date</span>: <span class="code-element">new</span> <span class="code-global">Date</span>()};
+    }
+
+    <span class="code-function">componentDidMount</span>() {
+
+    }
+
+    <span class="code-function">componentWillUnmount</span>() {
+
+    }
+    
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{</span><span class="code-variable">state</span>.<span class="code-variable">date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+                </code>
+                <p class="body-txt">
+                    These methods are called "lifecycle hooks".
+                </p>
+                <p class="body-txt">
+                    The <span class="highlight">componentDidMount()</span> hook runs after the component output has
+                    been rendered to the DOM. This is a good place to set up a timer:
+                </p>
+                <code>
+<span class="code-function">componentDidMount</span>() {
+    <span class="code-element">this</span.<span class="code-variable">timerID</span> = <span class="code-function">setInterval</span>(
+        () => <span class="code-element">this</span>.<span class="code-function">tick</span>(),
+        <span class="code-number">1000</span>
+    );
+}
+                </code>
+                <p class="body-txt">
+                    Note how we save the timer ID right on <span class="highlight">this</span>.
+                </p>
+                <p class="body-txt">
+                    While <span class="highlight">this.props</span> is set up by React itself and <span
+                    class="highlight">this.state</span> has a special meaning, you are free to add additional fields to
+                    the class manually if you need to store something that is not used for the visual output.
+                </p>
+                <p class="body-txt">
+                    If you don't use something in <span class="highlight">render()</span>, it shouldn't be in the state.
+                </p>
+                <p class="body-txt">
+                    We will tear down the timer in the <span class="highlight">componentWillUnmount()</span> lifecycle
+                    hook:
+                </p>
+                <code>
+<span class="code-function">componentWillUnmount</span>() {
+    <span class="code-function">clearInterval</span>(<span class="code-element">this</span>.<span class="code-variable">timerID</span>);
+}
+                </code>
+                <p class="body-txt">
+                    Finally, we will implement a method called <span class="highlight">tick()</span> that the <span
+                    class="highlight">Clock</span> component will run every second.
+                </p>
+                <p class="body-txt">
+                    It will use <span class="highlight">this.setState()</span> to schedule updates to the component
+                    local state:
+                </p>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Clock</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">constructor</span>(<span class="code-variable">props</span>) {
+        <span class="code-function">super</span>(<span class="code-variable">props</span>);
+        <span class="code-element">this</span>.<span class="code-variable">state</span> = {<span class="code-txt">date</span>: <span class="code-element">new</span> <span class="code-global">Date</span>()};
+    }
+
+    <span class="code-function">componentDidMount</span>() {
+        <span class="code-element">this</span>.<span class="code-variable">timerID</span> = <span class="code-function">setInterval</span>(
+            () => <span class="code-element">this</span>.<span class="code-function">tick</span>(),
+            <span class="code-number">1000</span>
+        );
+    }
+
+    <span class="code-function">componentWillUnmount</span>() {
+        <span class="code-function">clearInterval</span>(<span class="code-element">this</span>.<span class="code-variable">timerID</span>);
+    }
+    
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h1</span><span class="code-html">&gt;</span>Hello World!<span class="code-html">&lt;/</span><span class="code-element">h1</span><span class="code-html">&gt;</span>
+                <span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{</span><span class="code-variable">state</span>.<span class="code-variable">date</span>().<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render(</span>
+    <span class="code-html">&lt;</span><span class="code-element">Clock</span></span><span class="code-html"> /&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                </code>
+                <p class="body-txt">
+                    <a href="http://codepen.io/gaearon/pen/amqdNA?editors=0010">Try it on CodePen</a>.
+                </p>
+                <p class="body-txt">
+                    Now the clock ticks every second.
+                </p>
+                <p class="body-txt">
+                    Let's quickly recap what's going on and the order in which the methods are called:
+                </p>
+                <ol>
+                    <li>
+                        When <span class="highlight">&lt;Clock /&gt;</span> is passed to <span class="highlight">
+                        ReactDOM.render()</span>, React calls the constructor of the <span class="highlight">Clock</span>
+                        component. Since <span class="highlight">Clock</span> needs to display the current time, it
+                        initializes <span class="highlight">this.state</span> with an object including the current time.
+                        We will later update this state.
+                    </li>
+                    <li>
+                        React then calls the <span class="highlight">Clock</span> component's <span class="highlight">
+                        render()</span> method. This is how React learns what should be displayed on the screen. React
+                        then updates the DOM to match the <span class="highlight">Clock</span>'s render output.
+                    </li>
+                    <li>
+                        When the <span class="highlight">Clock</span> output is inserted in the DOM, React calls the
+                        <span class="highlight">componentDidMount()</span> lifecycle hook. Inside it, the <span
+                        class="highlight">Clock</span> component asks the browser to set up a timer to call the
+                        component's <span class="highlight">tick()</span> method once a second.
+                    </li>
+                    <li>
+                        Every second the browser calls the <span class="highlight">tick()</span> method. Inside it, the
+                        <span class="highlight">Clock</span> component schedules a UI update by calling <span
+                        class="highlight">setState()</span> with and object containing the current time. Thanks to the
+                        <span class="highlight">setState()</span> call, React knows the state has changed, and calls
+                        the <span class="highlight">render()</span> method again to learn what should be on the screen.
+                        This time, <span class="highlight">this.state.date</span> in the <span class="highlight">
+                        render()</span> method will be different, and so the render ouput will include the updated time.
+                        React updates the DOM accordingly.
+                    </li>
+                    <li>
+                        If the <span class="highlight">Clock</span> component is ever removed from the DOM, React calls
+                        the <span class="highlight">componentWillUnmount()</span> lifecycle hook so the timer is 
+                        stopped.
+                    </li>
+                </ol>
+                <h3 class="body-title">Using State Correctly</h3>
+                <p class="body-txt">
+                    There are three things you should know about <span class="highlight">setState()</span>.
+                </p>
+                <h4>Do Not Modify State Directly</h4>
+                <p class="body-txt">
+                    For example, this will not re-render a component:
+                </p>
+                <code>
+<span class="code-comments">// Wrong</span>
+<span class="code-element">this</span>.<span class="code-variable">state</span>.<span class="code-variable">comment</span> = <span class="code-txt">'Hello'</span>;
+                </code>
+                <p class="body-txt">
+                    Instead, use <span class="highlight">setState()</span>:
+                </p>
+                <code>
+<span class="code-comments">// Correct</span>
+<span class="code-element">this</span>.<span class="code-function">setState</span>({<span class="code-txt">comment</span>: <span class="code-txt">'Hello'</span>});
+                </code>
+                <p class="body-txt">
+                    The only place where you can assign <span class="highlight">this.state</span> is the constructor.
+                </p>
+                <h4>State Updates May Be Asynchronous</h4>
+                <p class="body-txt">
+                    React may batch multiple <span class="highlight">setState()</span> calls into a single update for
+                    performance.
+                </p>
+                <p class="body-txt">
+                    Because <span class="highlight">this.props</span> and <span class="highlight">this.state</span> may
+                    be updated asynchronously, you should not rely on their values for calculating the next state.
+                </p>
+                <p class="body-txt">
+                    For example, this code may fail to update the counter:
+                </p>
+                <code>
+<span class="code-comments">// Wrong</span>
+<span class="code-element">this</span>.<span class="code-function">setState</span>({
+    <span class="code-txt">comment</span>: <span class="code-element">this</span>.<span class="code-variable">state</span>.<span class="code-variable">counter</span> + <span class="code-element">this</span>.<span class="code-variable">props</span>.<span class="code-variable">increment</span>,
+});
+                </code>
+                <p class="body-txt">
+                    To fix it, use a second form of <span class="highlight">setState()</span> that accepts a function
+                    rather than an object. That function will receive the previous state as the first argument, and the
+                    props at the time the update is applied as the second argument:
+                </p>
+                <code>
+<span class="code-comments">// Correct</span>
+<span class="code-element">this</span>.<span class="code-function">setState</span>((<span class="code-variable">preveState</span>,<span class="code-variable">props</span>) => ({
+    <span class="code-txt">comment</span>: <span class="code-variable">prevState</span>.<span class="code-variable">counter</span> + <span class="code-variable">props</span>.<span class="code-variable">increment</span>,
+}));
+                </code>
+                <p class="body-txt">
+                    We used an <a hrf="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions">
+                    arrow function</a> above, but it also works with regular functions:
+                </p>
+                <code>
+<span class="code-comments">// Correct</span>
+<span class="code-element">this</span>.<span class="code-function">setState</span>(<span class="code-element">function</span>(<span class="code-variable">preveState</span>,<span class="code-variable">props</span>) {
+    <span class="code-return">return</span> {
+        <span class="code-txt">comment</span>: <span class="code-variable">prevState</span>.<span class="code-variable">counter</span> + <span class="code-variable">props</span>.<span class="code-variable">increment</span>
+    };
+});
+                </code>
+                <h4>State Updates are Merged</h4>
+                <p class="body-txt">
+                    When you call <span class="highlight">setState()</span>, React merges the object you provide into
+                    the current state.
+                </p>
+                <p class="body-txt">
+                    For example, your state may contain several independent variables:
+                </p>
+                <code>
+<span class="code-function">constructor</span>(<span class="code-variable">props</span>) {
+    <span class="code-function">super</span>(<span class="code-variable">props</span>);
+    <span class="code-element">this</span>.<span class="code-variable">state</span> = {
+        <span class="code-txt">posts</span>: [],
+        <span class="code-txt">comments</span>: [],
+    };
+}
+                </code>
+                <p class="body-txt">
+                    Then you can update them independently with seperate <span class="highlight">setState()</span>
+                    calls:
+                </p>
+                <code>
+<span class="code-function">componentDidMount</span>() {
+    <span class="code-function">fetchPosts()</span>.<span class="code-function">then</span>(<span class="code-variable">response</span> => {
+        <span class="code-element">this</span>.<span class="code-function">setState</span>({
+            <span class="code-txt">posts</span>: <span class="code-variable">response</span>.<span class="code-variable">posts</span>
+        });
+    });
+
+    <span class="code-function">fetchComments()</span>.<span class="code-function">then</span>(<span class="code-variable">response</span> => {
+        <span class="code-element">this</span>.<span class="code-function">setState</span>({
+            <span class="code-txt">comments</span>: <span class="code-variable">response</span>.<span class="code-variable">comments</span>
+        });
+    });
+}
+                </code>
+                <p class="body-txt">
+                    The merging is shallow, so <span class="highlight">this.setState({comments})</span> leaves <span
+                    class="highlight">this.state.posts</span> intact, but completely replaces <span class="highlight">
+                    this.state.comments</span>.
+                </p>
+                <h3 class="body-txt">The Data Flows Down</h3>
+                <p class="body-txt">
+                    Neither parent nor child components can know if a certain component is stateful or stateless, and
+                    they shouldn't care whether it is defined as a function or a class.
+                </p>
+                <p class="body-txt">
+                    This is why state is often called local or encapsulated. It is not accessible to any component
+                    other than the one that owns and sets it.
+                </p>
+                <p class="body-txt">
+                    A component may choose to pass its state down as props to its child components:
+                </p>
+                <code>
+<span class="code-html">&lt;</span><span class="code-element">h2</span><span class="code-html">&gt;</span>It is <span class="code-element">{this</span>.<span class="code-variable">state</span>.<span class="code-variable">date</span>.<span class="code-function">toLocaleTimeString</span>()<span class="code-element">}</span>.<span class="code-html">&lt;/</span><span class="code-element">h2</span><span class="code-html">&gt;</span>                    
+                </code>
+                <p class="body-txt">
+                    <a href="http://codepen.io/gaearon/pen/zKRqNB?editors=0010">Try it on CodePen</a>.
+                </p>
+                <p class="body-txt">
+                    This is commonly called a "top-down" or "unidirectional" data flow. Any state is always owned by
+                    some specific component, and any data or UI derived from that state can only affect components
+                    "below" them in the tree.
+                </p>
+                <p class="body-txt">
+                    If you imagine a componen tree as a waterfall of props, each component's state is like an
+                    additional water source that joins it at an arbitrary point but also flows down.
+                </p>
+                <p class="body-txt">
+                    To show that all components are truly isolated, we can create an <span class="highlight">App</span>
+                    component that renders three <span class="highlight">&lt;Clock&gt;</span>s:
+                </p>
+                <code>
+<span class="code-element">function</span> <span class="code-function">App</span>() {
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">Clock</span><span class="code-html"> /&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">Clock</span><span class="code-html"> /&gt;</span>
+            <span class="code-html">&lt;</span><span class="code-element">Clock</span><span class="code-html"> /&gt;</span>
+        <span class="code-html">&lt;/</span><span class="code-element">div</span><span class="code-html">&gt;</span>
+    );
+}
+
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
+    <span class="code-html">&lt;</span><span class="code-element">App </span><span class="code-html"> /&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                </code>
+                <p class="body-txt">
+                    <a href="http://codepen.io/gaearon/pen/vXdGmd?editors=0010">Try it on CodePen</a>.
+                </p>
+                <p class="body-txt">
+                    Each <span class="highlight">Clock</span> sets up its own timer and updates independently.
+                </p>
+                <p class="body-txt">
+                    In React apps, whether a component is stateful or stateless is considered and implementation detail
+                    of the component that may change over time. You can use stateless components inside stateful
+                    components, and vice versa.
+                </p>
             </section>
             <section id="Handling_Events" class="main-section">
                 <header>
