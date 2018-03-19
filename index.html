@@ -52,7 +52,7 @@
                 <h3 class="body-title">A Note on JavaScript</h3>
                 <p class="body-txt">
                     React is a JavaScript library, and so we’ll assume you have a basic understanding of the JavaScript
-                    language. If you don’t feel very confident, we recommend <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript">
+                    language. If you don’t feel very confident, we recommend <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript" class="body-link">
                     refreshing your JavaScript knowledge</a> so you can follow along more easily.
                 </p>
                 <p class="body-txt">
@@ -1254,7 +1254,194 @@ const <span class="code-variable">element</span> = (
                 <header>
                     <h2 class="main-section-title">Handling Events</h2>
                 </header>
-                <code></code>
+                <p class="body-txt">
+                    Handling events with React elements is very similar to handling events on DOM elements. There are
+                    some syntactic differences:
+                </p>
+                <ul>
+                    <li>
+                        React events are named using camelCase, rather than lowercase.
+                    </li>
+                    <li>
+                        With JSX you pass a function as the event handler, rather than a string.
+                    </li>
+                </ul>
+                <p class="body-txt">
+                    FOr example, the HTML:
+                </p>
+                <code>
+<span class="code-html">&lt;</span><span class="code-element">button</span> <span class="code-variable">onclick</span>=<span class="code-txt">"activateLasers()"</span><span class="code-html">&gt;</span>
+    Activate Lasers
+<span class="code-html">&lt;/</span><span class="code-element">button</span><span class="code-html">&gt;</span>
+                </code>
+                <p class="body-txt">
+                    is slightly different in React:
+                </p>
+                <code>
+<span class="code-html">&lt;</span><span class="code-element">button</span> <span class="code-variable">onclick</span>=<span class="code-element">{<span class="code-variable">activateLasers</span>}</span><span class="code-html">&gt;</span>
+    Activate Lasers
+<span class="code-html">&lt;/</span><span class="code-element">button</span><span class="code-html">&gt;</span>
+                </code>
+                <p class="body-txt">
+                    Another difference is that you cannot return <span class="highlight">false</span> to prevent
+                    default behavior in React. You must call <span class="highlight">preventDefault</span> explicitly.
+                    For example, with plain HTML, to prevent the default link behavior of opening a new page, you can
+                    write:
+                </p>
+                <code>
+<span class="code-html">&lt;</span><span class="code-element">a</span> <span class="code-variable">href</span>=<span class="code-txt">"#"</span> <span class="code-variable">onclick</span>=<span class="code-txt">"console.log('The link was clicked.'); return false"</span><span class="code-html">&gt;</span>
+    Click me
+<span class="code-html">&lt;/</span><span class="code-element">a</span><span class="code-html">&gt;</span>
+                </code>
+                <p class="body-txt">
+                    In React, this could instead be:
+                </p>
+                <code>
+<span class="code-element">function</span> <span class="code-function">ActionLink</span>() {
+    <span class="code-element">function</span> <span class="code-function">handleClick</span>(<span class="code-variable">e</span>) {
+        <span class="code-variable">e</span>.<span class="code-function">preventDefault</span>();
+        <span class="code-global">console</span>.<span class="code-function">log</span>(<span class="code-txt">'The link was clicked.'</span>);
+    }
+
+    <span class="code-return">return</span> (
+        <span class="code-html">&lt;</span><span class="code-element">a</span> <span class="code-variable">href</span>=<span class="code-txt">"#"</span> <span class="code-variable">onclick</span>=<span class="code-element">{<span class="code-variable">handleClick</span>}</span><span class="code-html">&gt;</span>
+            Click me
+        <span class="code-html">&lt;/</span><span class="code-element">a</span><span class="code-html">&gt;</span>
+    );
+}
+                </code>
+                <p class="body-txt">
+                    Here, <span class="highlight">e</span> is a synthetic event. React defines these synthetic events
+                    synthetic events according ot the <a href="https://www.w3.org/TR/DOM-Level-3-Events/" class="body-link">W3C spec</a>
+                    , so you don't need to worry about cross-browser compatibility. See the <a href="https://reactjs.org/docs/events.html" class="body-link">SyntheticEvent</a>
+                    syntheticEvent reference guide to learn more.
+                </p>
+                <p class="body-txt">
+                    When using React you should generally not need to call <span class="highlight">addEventListener</span>
+                    to add listeners to a DOM element after it is created. Instead, just provide a listener when the
+                    element is initially rendered.
+                </p>
+                <p class="body-txt">
+                    When you define a component using an <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes" class="body-link">ES6 class</a>,
+                    a common pattern is for an event handler to be a method on the class. For example, this <span class="highlight">
+                    Toggle</span> component renders a button that lets the user toggle between "ON" and "OFF" states:
+                </p>
+                <code>
+<span class="code-element">class</span> <span class="code-global">Toggle</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">constructor</span>(<span class="code-variable">props</span>) {
+        <span class="code-function">super</span>(<span class="code-variable">props</span>);        
+        <span class="code-element">this</span>.<span class="code-variable">state</span> = {<span class="code-txt">isToggleOn</span>: <span class="code-element">true</span>};
+
+        <span class="code-comments">// This binding is necessary to make `this` work in the callback</span>
+        <span class="code-element">this</span>.<span class="code-variable">handleClick</span> = <span class="code-element">this</span>.<span class="code-variable">handleClick</span>.<span class="code-function">bind</span>(<span class="code-element">this</span>);
+    }
+
+    <span class="code-function">handleClick</span>() {
+        <span class="code-element">this</span>.<span class="code-function">setState</span>(<span class="code-variable">prevState</span> <span class="code-element">=></span> ({
+            <span class="code-txt">isToggleOn</span>: !<span class="code-variable">prevState</span>.<span class="code-variable">isToggleOn</span>
+        }));
+    }
+
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">button</span> <span class="code-variable">onClick</span>=<span class="code-element">{this</span>.<span class="code-variable">handleClick</span><span class="code-element">}</span><span class="code-html">&gt;</span>
+                <span class="code-element">{this</span>.<span class="code-variable">state</span>.<span class="code-variable">isToggleOn</span> ? <span class="code-txt">'ON'</span> : <span class="code-txt">'OFF'</span><span class="code-element">}</span>
+            <span class="code-html">&lt;/</span><span class="code-element">button</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+
+<span class="code-variable">ReactDOM</span>.<span class="code-function">render</span>(
+    <span class="code-html">&lt;</span><span class="code-element">Toggle</span><span class="code-html"> /&gt;</span>,
+    <span class="code-global">document</span>.<span class="code-function">getElementById</span>(<span class="code-txt">'root'</span>)
+);
+                </code>
+                <p class="body-txt">
+                        <a href="http://codepen.io/gaearon/pen/xEmzGg?editors=0010" class="body-link">Try it on CodePen.</a>
+                </p>
+                <p class="body-txt">
+                    You have to be careful about the meaning of <span class="highlight">this</span> in JSX callbacks.
+                    In JavaScript, class methods are not <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_objects/Function/bind" class="body-link">bound</a>
+                    by default. If you forget to bind <span class="highlight">this.handleClick</span> and pass it to
+                    <span class="highlight">onClick</span>, <span class="highlight">this</span> will be
+                    <span class="highlight">undefined</span> when the function is actually called.
+                </p>
+                <p class="body-txt">
+                    This is not React-specific behavior: it is a part of <a href="https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/" class="body-link">how function work in JavaScript</a>.
+                    Generally, if you refer to a method without <span class="highlight">()</span> after it, such as
+                    <span class="highlight">onClick={this.handleClick}</span>, you should bind that method.
+                </p>
+                <p class="body-txt">
+                    If calling <span class="highlight">bind</span> annoys you, there are two ways you can get arround
+                    this. If you are using the experimental <a href="https://babeljs.io/docs/plugins/transform-class-properties/" class="body-link">public class fields syntax</a>,
+                    you can use class fields to correctly bind callbacks:
+                </p>
+                <code>
+<span class="code-element">class</span> <span class="code-global">LoggingButton</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-comments">// This syntax ensures `this` is bound within handleClick.</span>
+    <span class="code-comments">// Warning: this is *experimental* syntax.</span>
+    <span class="code-function">handleClick</span> = () <span class="code-element">=></span> {
+        <span class="code-global">console</span>.<span class="code-function">log</span>(<span class="code-txt">'this is:'</span>, <span class="code-element">this</span>);
+    }
+
+    <span class="code-function">render</span>() {
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">button</span> <span class="code-variable">onClick</span>=<span class="code-element">{this</span>.<span class="code-variable">handleClick</span><span class="code-element">}</span><span class="code-html">&gt;</span>
+                Click me
+            <span class="code-html">&lt;/</span><span class="code-element">button</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+                </code>
+                <p class="body-txt">
+                    This syntax is enabled by default in <a href="https://github.com/facebookincubator/create-react-app" class="body-link">Create React App</a>.
+                </p>
+                <p class="body-txt">
+                    If you aren't using class fields syntax, you can use an <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/Arrow_functions" class="body-link">arrow function</a>
+                    in the callback:
+                </p>
+                <code>
+<span class="code-element">class</span> <span class="code-global">LoggingButton</span> <span class="code-element">extends</span> <span class="code-global">React</span>.<span class="code-variable">Component</span> {
+    <span class="code-function">handleClick</span> = () <span class="code-element">=></span> {
+        <span class="code-global">console</span>.<span class="code-function">log</span>(<span class="code-txt">'this is:'</span>, <span class="code-element">this</span>);
+    }
+
+    <span class="code-function">render</span>() {
+        <span class="code-comments">// This syntax ensures `this` is bound within handleClick</span>
+        <span class="code-return">return</span> (
+            <span class="code-html">&lt;</span><span class="code-element">button</span> <span class="code-variable">onClick</span>=<span class="code-element">{</span>(<span class="code-variable">e</span>) <span class="code-element">=> this</span>.<span class="code-function">handleClick</span>(<span class="code-variable">e</span>)<span class="code-element">}</span><span class="code-html">&gt;</span>
+                Click me
+            <span class="code-html">&lt;/</span><span class="code-element">button</span><span class="code-html">&gt;</span>
+        );
+    }
+}
+                </code>
+                <p class="body-txt">
+                        The problem with this syntax is that a different callback is created each time the
+                        <span class="highlight">LoggingButton</span> renders. In most cases, this is fine. However, if
+                        this callback is passed as a prop to lower components, those components might do an extra
+                        re-rendering. We generally recommend binding in the constructor or using the class fields
+                        syntax, to avoid this sort of performance problem.
+                </p>
+                <h3 class="body-title">Passing Arguments to Event Handlers</h3>
+                <p class="body-txt">
+                    Inside a loop it is common to want to pass an extra parameter to an event handler. For example, if
+                    <span class="highlight">id</span> is the row ID, either of the following would work:
+                </p>
+                <code>
+<span class="code-html">&lt;</span><span class="code-element">button</span> <span class="code-variable">onClick</span>=<span class="code-element">{</span>(<span class="code-variable">e</span>) <span class="code-element">=> this</span>.<span class="code-function">deleteRow</span>(<span class="code-variable">id</span>, <span class="code-variable">e</span>)<span class="code-element">}</span><span class="code-html">&gt;</span>Delete Row<span class="code-html">&lt;/</span><span class="code-element">button</span><span class="code-html">&gt;</span>
+<span class="code-html">&lt;</span><span class="code-element">button</span> <span class="code-variable">onClick</span>=<span class="code-element">{this</span>.<span class="code-variable">deleteRow</span>.<span class="code-function">bind</span>(<span class="code-variable">this</span>, <span class="code-variable">id</span>)<span class="code-element">}</span><span class="code-html">&gt;</span>Delete Row<span class="code-html">&lt;/</span><span class="code-element">button</span><span class="code-html">&gt;</span>
+                </code>
+                <p class="body-txt">
+                    The above two lines are equivalent, and use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions" class="body-link">arrow functions</a>
+                    and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind" class="body-link">Function.prototype.bind</a>
+                    respectively.
+                </p>
+                <p class="body-txt">
+                    In both cases, the <span class="highlight">e</span> argument representing the React event will be
+                    passed as a second argument after the ID. With an arrow function, we have to pass it explictly, but
+                    with <span class="highlight">bind</span> any further arguments are automatically forwarded.
+                </p>
             </section>
         </main>
         <script src="js/app.js"></script>
